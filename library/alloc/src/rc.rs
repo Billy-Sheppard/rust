@@ -2230,6 +2230,8 @@ impl<T: Default> Default for Rc<T> {
 #[stable(feature = "more_rc_default_impls", since = "CURRENT_RUSTC_VERSION")]
 impl Default for Rc<str> {
     /// Creates an empty str inside an Rc
+    ///
+    /// This may or may not share an allocation with other Rcs on the same thread.
     #[inline]
     fn default() -> Self {
         Rc::from("")
@@ -2240,6 +2242,8 @@ impl Default for Rc<str> {
 #[stable(feature = "more_rc_default_impls", since = "CURRENT_RUSTC_VERSION")]
 impl<T> Default for Rc<[T]> {
     /// Creates an empty `[T]` inside an Rc
+    ///
+    /// This may or may not share an allocation with other Rcs on the same thread.
     #[inline]
     fn default() -> Self {
         let arr: [T; 0] = [];
